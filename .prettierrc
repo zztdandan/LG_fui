@@ -1,0 +1,19 @@
+{
+  "printWidth": 100,
+  "tabWidth": 2,
+  "parser": "babylon",
+  "trailingComma": "none",
+  "jsxBracketSameLine": true,
+  "semi": true,
+  "singleQuote": false,
+  "bracketSpacing": true,
+  "overrides": [
+
+    {
+      "files": "*.ts",
+      "options": {
+        "parser": "typescript"
+      }
+    }
+  ]
+}

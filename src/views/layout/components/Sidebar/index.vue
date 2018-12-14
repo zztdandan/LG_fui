@@ -1,0 +1,63 @@
+<template>
+
+  <!-- 实现sidebar各项设置 -->
+  <div :class="navbar_class" class="side-navbar">
+    <el-menu :show-timeout="100" :default-active="actived_page" :collapse-transition="true" :collapse="isCollapse" mode="vertical" background-color="#304156" text-color="#bfcbd9" active-text-color="#409EFF">
+      <sidebar-item v-for="menu_item in root_menu" :key="menu_item.code" :one_menu_item="menu_item" :total_list="page_menu" />
+    </el-menu>
+  </div>
+</template>
+
+<script>
+  import SidebarItem from "./SidebarItem";
+  import linqjs from "linqjs";
+  export default {
+    components: { SidebarItem },
+    data: function() {
+      return {};
+    },
+    computed: {
+      actived_page() {
+        let page = this.$store.getters.ACTIVED_PAGE;
+        return page.id;
+      },
+      root_menu() {
+        // 返回所有parentId为nulld的目录
+        let a = this.$store.getters.USER_MENU;
+
+        return a.where(x => x.parentId == null);
+      },
+      isCollapse() {
+        return !this.$store.getters.SIDEBAR_COLLAPSE;
+      },
+      navbar_class() {
+        return this.isCollapse ? "collapse-nav" : "nocollapse-nav";
+      },
+      page_menu() {
+        return this.$store.getters.USER_MENU;
+      }
+    }
+  };
+</script>
+<style scoped>
+.side-navbar {
+  height: 100%;
+  background-color: rgb(48, 65, 86);
+  /* border-right: solid 1px #e6e6e6; */
+  padding: -1px;
+  overflow: hidden;
+}
+.collapse-nav {
+  /* width: fit-content; */
+  overflow: hidden;
+}
+.nocollapse-nav {
+  /* width: fit-content; */
+  overflow: hidden;
+}
+</style>
+<style>
+.el-menu {
+  border-right: solid 0px #e6e6e6;
+}
+</style>

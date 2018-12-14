@@ -1,0 +1,2 @@
+这个目录主要是一个自定义的layout布局以及必要插件
+经过考虑，iframe还是作为一个封装控件使用vue-router调用，也许可以解决缓存keep alive问题
