@@ -9,15 +9,15 @@
 ## 一、框架的部署
 ### 1.1	下载安装
 新建一个文件夹，从我们的git下下载最新的框架文件。
-[在柳钢内网打开](http://172.16.4.191:3000/80822215/lg-admin-template.git)
+[在柳钢内网打开](http://172.16.4.191:3000/80822215/LG_fui.git)
 ```
-git clone http://172.16.4.191:3000/80822215/lg-admin-template.git
+git clone http://172.16.4.191:3000/80822215/LG_fui.git
 ```
-进入目录后，切换到目前的最新分支：zztdevelop分支
+进入目录后，切换到目前的正式版本分支:release(或者切换到已有的标签)
 ```
-cd lg-admin-template
+cd LG_fui
 git fetch
-git checkout zztdevelop
+git checkout release
 ```
 安装依赖并测试运行
 ```

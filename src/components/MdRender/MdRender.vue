@@ -40,30 +40,30 @@
     mounted: function() {
       let that_vue = this;
       window.onresize = function() {
-        // console.log("高度改变");
-        let hgt = window.document.body.scrollHeight + 17;
-        //下面这里不用预先设置好的thatvue而用this则无法获得信息
-        let ifr_name = that_vue.$route.name;
+        // // console.log("高度改变");
+        // let hgt = window.document.body.scrollHeight + 17;
+        // //下面这里不用预先设置好的thatvue而用this则无法获得信息
+        // let ifr_name = that_vue.$route.name;
 
-        let params = { iframe_name: ifr_name, iframe_height: hgt };
+        // let params = { iframe_name: ifr_name, iframe_height: hgt };
 
-        window.parent.postMessage(
-          { type: "simple", req_name: "setIframeHeight", req_param: params },
-          "*"
-        );
+        // window.parent.postMessage(
+        //   { type: "simple", req_name: "setIframeHeight", req_param: params },
+        //   "*"
+        // );
       };
     },
     updated: function() {
       // console.log("内容升级");
-      let hgt = window.document.body.scrollHeight + 17;
-      // console.log("获得token信息", window.parent.document.body);
-      let ifr_name = this.$route.name;
-      let params = { iframe_name: ifr_name, iframe_height: hgt };
+      // let hgt = window.document.body.scrollHeight + 17;
+      // // console.log("获得token信息", window.parent.document.body);
+      // let ifr_name = this.$route.name;
+      // let params = { iframe_name: ifr_name, iframe_height: hgt };
 
-      window.parent.postMessage(
-        { type: "simple", req_name: "setIframeHeight", req_param: params },
-        "*"
-      );
+      // window.parent.postMessage(
+      //   { type: "simple", req_name: "setIframeHeight", req_param: params },
+      //   "*"
+      // );
     }
   };
 </script>

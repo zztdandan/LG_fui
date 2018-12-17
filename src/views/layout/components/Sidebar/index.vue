@@ -2,6 +2,9 @@
 
   <!-- 实现sidebar各项设置 -->
   <div :class="navbar_class" class="side-navbar">
+     <div class="rotator-container">
+      <rotator :toggle-click="toggleSideBar" :is-active="!isCollapse"></rotator>
+    </div>
     <el-menu :show-timeout="100" :default-active="actived_page" :collapse-transition="true" :collapse="isCollapse" mode="vertical" background-color="#304156" text-color="#bfcbd9" active-text-color="#409EFF">
       <sidebar-item v-for="menu_item in root_menu" :key="menu_item.code" :one_menu_item="menu_item" :total_list="page_menu" />
     </el-menu>
@@ -9,10 +12,11 @@
 </template>
 
 <script>
+ import rotator from "@/components/rotator/rotator";
   import SidebarItem from "./SidebarItem";
   import linqjs from "linqjs";
   export default {
-    components: { SidebarItem },
+    components: { SidebarItem,rotator },
     data: function() {
       return {};
     },
@@ -35,6 +39,11 @@
       },
       page_menu() {
         return this.$store.getters.USER_MENU;
+      }
+    },
+    methods:{
+      toggleSideBar() {
+        this.$store.commit("TOGGLE_SIDEBAR");
       }
     }
   };
@@ -59,5 +68,13 @@
 <style>
 .el-menu {
   border-right: solid 0px #e6e6e6;
+}
+.rotator-container {
+  color: #bfcbd9;
+  /* width: 100%; */
+  text-align: center;
+  display: block;
+  padding: 0.5rem;
+  font-size: 1.5rem;
 }
 </style>
