@@ -1,7 +1,8 @@
 
 <script>
   import marked from "marked";
-
+  import highlight from "highlight.js";
+  import "@/assets/css/hljs/atom-one-light.css";
   export default {
     name: "md-render",
 
@@ -22,7 +23,10 @@
         pedantic: false,
         sanitize: true,
         smartLists: true,
-        smartypants: true
+        smartypants: true,
+        highlight: function(code) {
+          return highlight.highlightAuto(code).value;
+        }
       });
 
       let a = marked(md_text);
@@ -44,9 +48,7 @@
         // let hgt = window.document.body.scrollHeight + 17;
         // //下面这里不用预先设置好的thatvue而用this则无法获得信息
         // let ifr_name = that_vue.$route.name;
-
         // let params = { iframe_name: ifr_name, iframe_height: hgt };
-
         // window.parent.postMessage(
         //   { type: "simple", req_name: "setIframeHeight", req_param: params },
         //   "*"
@@ -59,7 +61,6 @@
       // // console.log("获得token信息", window.parent.document.body);
       // let ifr_name = this.$route.name;
       // let params = { iframe_name: ifr_name, iframe_height: hgt };
-
       // window.parent.postMessage(
       //   { type: "simple", req_name: "setIframeHeight", req_param: params },
       //   "*"

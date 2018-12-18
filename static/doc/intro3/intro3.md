@@ -66,7 +66,57 @@
 
 #### 2.1.1 CommonJS 
 
+CommonJS就是一个JavaScript模块化的规范，该规范最初是用在服务器端的node的，前端的webpack也是对CommonJS原生支持的。
+根据这个规范，每一个文件就是一个模块，其内部定义的变量是属于这个模块的，不会对外暴露，也就是说不会污染全局变量。
+**CommonJS的核心思想就是通过 require 方法来同步加载所要依赖的其他模块，然后通过 exports 或者 module.exports 来导出需要暴露的接口。**
+如下所示：
 
+```javascript
+// a.js
+var x = 5;
+var addX = function (value) {
+  return value + x;
+};
+module.exports.x = x;
+module.exports.addX = addX;
+```
+
+这里的a.js就是一个CommonJS规范的模块了。 这里的module就代表了这个模块，module的exports属性就是对外暴露的接口，可以对外导出外部可以访问的变量，比如这里的x和addX。
+
+
+exports 是对 module.exports 的引用。比如我们可以认为在一个模块的顶部有这句代码：
+
+exports = module.exports
+
+所以，我们不能直接给exports赋值，比如number、function等。
+
+**然后我们就可以在其他模块中引入这个模块使用了：**
+
+```
+vara = require('./a.js');
+console.log(example.x); // 5
+console.log(example.addX(1)); // 6
+```
+
++ 所有代码都运行在模块作用域，不会污染全局作用域；模块可以多次加载，但只会在第一次加载的时候运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果；模块的加载顺序，按照代码的出现顺序是同步加载的;
++ __dirname代表当前模块文件所在的文件夹路径，__filename代表当前模块文件所在的文件夹路径+文件名;
++ require（同步加载）基本功能：读取并执行一个JS文件，然后返回该模块的exports对象，如果没有发现指定模块会报错;
++ 模块内的exports：为了方便，node为每个模块提供一个exports变量，其指向module.exports，相当于在模块头部加了这句话：var exports = module.exports，在对外输出时，可以给exports对象添加方法，PS：不能直接赋值（因为这样就切断了exports和module.exports的联系）;
++ NPM的模块加载机制：
+	如果require的是绝对路径文件，查找不会去遍历每个node_modules目录，其速度最快
+	1）.从module.paths数组中（由当前执行文件目录到磁盘根目录）取出第一个目录作为查找基准
+	2）.直接从目录中查找该文件，如果存在则结束查找，如果不存在则进行下一条查找
+	3）.尝试添加.js、.node、.json后缀之后查找，如果存在文件则结束查找，如果不存在则进行下一条查找
+	4）.尝试将require的参数作为一个包来进行查找，读取目录下的package.json文件，取得Main参数指定的文件
+	5）.尝试查找该文件，如果存在则结束查找，如果不存在则进行第3条查找
+	6）.如果继续失败，则取出module.paths数组中的下一目录作为基准查找，循环第1-5个步骤
+	7）.如果继续失败，循环第1-6个步骤，直到module.paths中的最后一个值
+	8）.如果继续失败，则抛出异常
+
+#### 2.1.2 ES6 Module
+
+ 
+ 
 
 ### 2.2 组件化
 
