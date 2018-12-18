@@ -69,7 +69,7 @@
   padding: 3px;
 }
 .fl-nw{
-width: fit-content;
+// width: fit-content;
 flex-wrap: "nowrap";
 display: flex;
 flex-direction: row;
