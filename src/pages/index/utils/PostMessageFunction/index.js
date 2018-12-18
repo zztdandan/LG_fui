@@ -28,7 +28,7 @@ function getUserInfo({ token }, that_vue) {
 // 打开新页面
 function openNewPage({ code }, that_vue) {
   console.log("收到打开新页面请求");
-  var tmp_page_info = { code: code, url: url, name: name };
+  var tmp_page_info = { code: code };
   that_vue.$store.dispatch("open_page", tmp_page_info);
 }
 

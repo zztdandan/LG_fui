@@ -6,7 +6,7 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import locale from "element-ui/lib/locale/lang/en"; // lang i18n
 
-import "@/styles/index.scss"; // global css
+// import "@/styles/index.scss"; // global css
 
 // bs的分栏系统
 import "@/assets/css/bs_col.css";
@@ -16,6 +16,8 @@ import App from "./index.vue";
 // index的专用store，就是主要的store
 import store from "./store";
 
+import "#static/lg-icon/style.css"
+import "#static/moon-icon/style.css"
 // import "@/icons"; // icon
 // import "@/permission"; // permission control
 

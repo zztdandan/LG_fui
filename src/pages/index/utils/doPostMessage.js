@@ -2,9 +2,10 @@
 
 import PMFunction from "./PostMessageFunction/index.js";
 export default async function(rsdata, that_vue) {
+  let req = rsdata;
   try {
     // let PMFunction=require("./PostMessageFunction/setIframeHeight.js");
-    let req = rsdata;
+    
     let PM = PMFunction;
     if (req.type === "simple") {
       console.log("获得命令",rsdata);

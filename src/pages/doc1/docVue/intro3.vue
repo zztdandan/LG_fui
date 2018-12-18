@@ -38,20 +38,20 @@
         };
       },
       created: async function() {
-        var res = await this.$ajax.get("/static/doc/intro2/intro2.md");
+        var res = await this.$ajax.get("/static/doc/intro3/intro3.md");
         // console.log(res);
         this.text1 = res.data;
       },
       methods: {
         frontpage() {
-          let params = { code: "intro1" };
+          let params = { code: "intro2" };
           window.parent.postMessage(
             { type: "simple", req_name: "openNewPage", req_param: params },
             "*"
           );
         },
         nextPage() {
-          let params = { code: "intro3" };
+          let params = { code: "intro4" };
           window.parent.postMessage(
             { type: "simple", req_name: "openNewPage", req_param: params },
             "*"
