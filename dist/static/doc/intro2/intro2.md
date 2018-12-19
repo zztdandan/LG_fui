@@ -114,7 +114,7 @@ npm run build
 PostMessage是目前较好的解决窗口间交互的数据交流方式，属于HTML5自带的window函数。每个window都会自带该函数。
 发送postmessage到母窗口可以触发在主框架预先写好的函数，使主框架返回相应的数据或做出操作，如改变窗口高度，关闭该tab，获得user信息等。
 下面是一个简单的函数实例：
-```
+```javascript
   let params = { iframe_name: "iframe_test", iframe_height: hgt };
             window.parent.postMessage(
                 { type: "simple", req_name: "setIframeHeight", req_param: params },
@@ -139,7 +139,7 @@ PostMessage是目前较好的解决窗口间交互的数据交流方式，属于
 我们在框架内规定了一个salt参数，当postMessage发送请求时，框架接收到salt参数后会将这个参数原样返回，这样当子页面接收到同样的salt参数，就知道这个信息是其发送的某个请求的回调了。下面的实例中会有类似的样例可供参考
 
 #### 4.3.5 各接口实例：
-```
+```javascript
 //setIframeHeight
 //---------------------------------------------
   let hgt = window.document.body.scrollHeight + 17;
@@ -150,7 +150,7 @@ PostMessage是目前较好的解决窗口间交互的数据交流方式，属于
       window.parent.postMessage({ type: "simple", req_name: "setIframeHeight", req_param: params }, "*");
 ```
 
-```
+```javascript
 //closeIframe
 //---------------------------------------------
   let params = { name: "test" };
@@ -160,7 +160,7 @@ PostMessage是目前较好的解决窗口间交互的数据交流方式，属于
         );
 ```
 
-```
+```javascript
 //getUserInfo
 //--------------------------------------------
 
@@ -193,7 +193,7 @@ PostMessage是目前较好的解决窗口间交互的数据交流方式，属于
       );
 ```
 
-```
+```javascript
 //openNewPage
 //---------------------------------------------
  let params = { code: "intro1" };
@@ -203,7 +203,7 @@ PostMessage是目前较好的解决窗口间交互的数据交流方式，属于
         );
 ```
 
-```
+```javascript
 //getMenu
 //---------------------------------------------
 
