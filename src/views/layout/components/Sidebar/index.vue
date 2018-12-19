@@ -2,10 +2,10 @@
 
   <!-- 实现sidebar各项设置 -->
   <div :class="navbar_class" class="side-navbar">
-     <div class="rotator-container">
-      <rotator :toggle-click="toggleSideBar" :is-active="!isCollapse"></rotator>
+     <div class="title-container">
+     柳钢前端
     </div>
-    <el-menu :show-timeout="100" :default-active="actived_page" :collapse-transition="true" :collapse="isCollapse" mode="vertical" background-color="#304156" text-color="#bfcbd9" active-text-color="#409EFF">
+    <el-menu :show-timeout="100" :default-active="actived_page" :collapse-transition="true" :collapse="isCollapse" mode="vertical" background-color="#4f7080" text-color="#bfcbd9" active-text-color="#409EFF">
       <sidebar-item v-for="menu_item in root_menu" :key="menu_item.code" :one_menu_item="menu_item" :total_list="page_menu" />
     </el-menu>
   </div>
@@ -51,7 +51,7 @@
 <style scoped>
 .side-navbar {
   height: 100%;
-  background-color: rgb(48, 65, 86);
+  background-color: #4f7080;
   /* border-right: solid 1px #e6e6e6; */
   padding: -1px;
   overflow: hidden;
@@ -69,7 +69,7 @@
 .el-menu {
   border-right: solid 0px #e6e6e6;
 }
-.rotator-container {
+.title-container {
   color: #bfcbd9;
   /* width: 100%; */
   text-align: center;

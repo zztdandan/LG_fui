@@ -51,20 +51,28 @@
 
 ## 二、前端工程化介绍
 
-相比较已经非常成熟的其他领域，前端虽是后起之秀，但其野蛮生长是其他领域不能比的。虽然前端技术飞快发展，但是前端整体的工程生态并没有同步跟进。目前绝大多数的前端团队仍然使用非常原始的“切图（FE）->套模板（RD）”的开发模式，这种模式下的前端开发虽说不是刀耕火种的原始状态，但是效率非常低下。
-
+虽然前端技术飞快发展，但是前端整体的工程生态并没有同步跟进。目前绝大多数的前端团队仍然使用非常原始的“切图（FE）->套模板（RD）”的开发模式，这种模式下的前端开发虽说不是刀耕火种的原始状态，但是效率非常低下。
 如果说计算机科学要解决的是系统的某个具体问题，或者更通俗点说是面向编码的，那么工程化要解决的是如何提高整个系统生产效率。
 具体到前端工程化，面临的问题是如何提高编码->测试->维护阶段的生产效率。
 
-为了完成以上目标，我们将从传统的SSR（服务端渲染）、前后端结合的开发模式，通过一系列规范与工作，进化到前后端分离、前端工程化的开发模式。
+为了完成以上目标，我们将从传统的前后端结合的开发模式，通过一系列规范与工具，进化到前后端分离、前端工程化的开发模式。
 
-### 2.1 模块化
+![](/static/doc/intro3/pic/3.png)
+
+### 2.1 代码规范
+  使用ESLINT进行代码规范，prettier进行代码格式化。
+### 2.2 分支管理
+  使用git进行分支管理，建议使用标准的git-flow流程进行分工合作。关于git-flow及git的详细信息，可以参看我们git中的：
+  [GitLabGuide](http://172.16.4.191:3000/80822215/GitLabGuide.git)
+
+
+### 2.3 模块化
 
 前面我们提到在组织代码的时候会用到模块化和组件化,大家应该理解到,前端工程化是一个高层次的思想,而模块化和组件化是为工程化思想下相对较具体的开发方式,因此可以简单的认为模块化和组件化是工程化的表现形式。
 
 那具体什么是模块化呢,还是举简单的例子,我们要写一个实现A功能的JS代码,这个功能在项目其他位置也需要用到,那么我们就可以把这个功能看成一个模块采用一定的方式进行模块化编写,既能实现复用还可以分而治之,同理在写样式的时候,如果我们需要某种特殊的样式,会在很多地方应用,那么我们也可以采用一定的方式进行CSS的模块化,具体说来,JS模块化方案很多,有AMD/CommonJS/UMD/ES6 Module 等,CSS模块化开发大多是在less、sass、stylus等预处理器的import/mixin特性支持下实现的。
 
-#### 2.1.1 CommonJS 
+#### 2.3.1 CommonJS 
 
 CommonJS就是一个JavaScript模块化的规范，该规范最初是用在服务器端的node的，前端的webpack也是对CommonJS原生支持的。
 根据这个规范，每一个文件就是一个模块，其内部定义的变量是属于这个模块的，不会对外暴露，也就是说不会污染全局变量。
@@ -92,33 +100,75 @@ exports = module.exports
 
 **然后我们就可以在其他模块中引入这个模块使用了：**
 
-```
-vara = require('./a.js');
+```javascript
+var a = require('./a.js');
 console.log(example.x); // 5
 console.log(example.addX(1)); // 6
 ```
+
 
 + 所有代码都运行在模块作用域，不会污染全局作用域；模块可以多次加载，但只会在第一次加载的时候运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果；模块的加载顺序，按照代码的出现顺序是同步加载的;
 + __dirname代表当前模块文件所在的文件夹路径，__filename代表当前模块文件所在的文件夹路径+文件名;
 + require（同步加载）基本功能：读取并执行一个JS文件，然后返回该模块的exports对象，如果没有发现指定模块会报错;
 + 模块内的exports：为了方便，node为每个模块提供一个exports变量，其指向module.exports，相当于在模块头部加了这句话：var exports = module.exports，在对外输出时，可以给exports对象添加方法，PS：不能直接赋值（因为这样就切断了exports和module.exports的联系）;
-+ NPM的模块加载机制：
-	如果require的是绝对路径文件，查找不会去遍历每个node_modules目录，其速度最快
-	1）.从module.paths数组中（由当前执行文件目录到磁盘根目录）取出第一个目录作为查找基准
-	2）.直接从目录中查找该文件，如果存在则结束查找，如果不存在则进行下一条查找
-	3）.尝试添加.js、.node、.json后缀之后查找，如果存在文件则结束查找，如果不存在则进行下一条查找
-	4）.尝试将require的参数作为一个包来进行查找，读取目录下的package.json文件，取得Main参数指定的文件
-	5）.尝试查找该文件，如果存在则结束查找，如果不存在则进行第3条查找
-	6）.如果继续失败，则取出module.paths数组中的下一目录作为基准查找，循环第1-5个步骤
-	7）.如果继续失败，循环第1-6个步骤，直到module.paths中的最后一个值
-	8）.如果继续失败，则抛出异常
 
-#### 2.1.2 ES6 Module
+#### 2.3.2 ES6 Module
 
- 
- 
+ 在ES6中，我们可以使用 import 关键字引入模块，通过 export 关键字导出模块，功能较之于前几个方案更为强大，也是我们所推崇的，但是由于ES6目前无法在浏览器中执行，所以，我们只能通过babel将不被支持的import编译为当前受到广泛支持的 require。
+虽然目前import和require的区别不大，但是还是推荐使用使用es6，因为未来es6必定是主流，对于代码的迁移成本还是非常容易的。
+##### 与require的区别：
++ Module在编译时就确定各模块的依赖关系，而不是在运行时加载。
++ 使用"[严格模式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode)"，减少编码错误及阅读障碍
++ 不需要定义命名空间，加载的模块就是命名空间
 
-### 2.2 组件化
+
+##### export&&import
+在文件中，使用export规定该文件的对外输出接口，除了export的部分均不往外输出。
+
+输出示例：
+```javascript
+//————————require示例————————————
+//——————————a.js
+var c={
+  //c就是命名空间
+  a,b
+}
+//函数
+var a=function(){
+  return "this is function"
+}
+//b是类
+var b={
+  param:"aa",
+}
+//输出c
+module.export=c;
+//————————b.js
+var c_module=require("./a.js");
+//c_module就是引用的命名空间
+console.log(c_module.a());
+console.log(c_module.b.param);
+```
+```javascript
+//————————require示例————————————
+//——————————a.js
+//a文件本身就是命名空间
+export var b={
+  //直接输出b
+ param:"aa",
+}
+export var a=function(){
+  return "this is function"
+}
+//————————b.js
+import {a,b} from "./a.js";
+//c_module就是引用的命名空间
+console.log(.a());
+console.log(b.param);
+```
+具体语法可参照[ES6 Module](http://es6.ruanyifeng.com/#docs/module)
+
+### 2.4 组件化
 
 组件化并不是前端所特有的，一些其他的语言或者桌面程序等，都具有组件化的先例。确切的说，只要有UI层的展示，就必定有可以组件化的地方。简单来说，组件就是将一段UI样式和其对应的功能作为独立的整体去看待，无论这个整体放在哪里去使用，它都具有一样的功能和样式，从而实现复用，这种整体化的细想就是组件化。不难看出，组件化设计就是为了增加复用性，灵活性，提高系统设计，从而提高开发效率。
 
@@ -126,159 +176,20 @@ console.log(example.addX(1)); // 6
 
 ![](/static/doc/intro3/pic/components.png)
 
+在vue的开发中，可以用逐层分治的模式把一个完整的工程分治为一个个页面，来简化开发难度，增加复用性
+![](/static/doc/intro3/pic/4.png)
 
-柳钢前端框架结构图如下
+### 2.5 构建
+我们采用的构建工具是webpack。webpack可以将模块化分散的各个.vue文件，.js文件以chunks的方式整合生成一个整体的js文件，我们发布的时候只需要将整合好的js发布到产品环境即可。
+![](/static/doc/intro3/pic/5.png)
+详细的webpack打包性质我们将在下篇介绍，现在只需要知道使用Module及.vue工程化开发的文件不经过打包是无法真正显示为页面的。
 
-<img style="width:1000px!important;    max-width:100% !important;" src='/static/doc/intro2/pic/svg1.svg'/>
-
-## 三、各开发模式区别：
-
-|各项特征|	在主框架主页面开发|	在主框架多页面开发|	在其他外链页面开发|
-| --- | --- | --- |---|
-|开发特征|	具有传统SPA开发的特征，使用完整的一套开发组件与包	|MPA开发特征，使用与主页面共享的一套开发组件与包。	|自选技术栈，较自由的开发模式|
-|开发组件共享|	与主框架完全使用同样组件|	与主框架基本使用同样组件，在pages里面的组件不共享|	与主框架使用不同技术栈|
-|资源共享	|可调用主框架的vuex|	用postmessage方式交互	|用postmessage方式交互|
-|git	|如果主框架升级，需要合并大量代码并解决冲突|	如果主框架升级，需要合并极少的代码（个别配置文件），基本无冲突	|与主框架无关，不需要合并代码，主框架可以随时升级|
-|资源加载|	所有资源打包在主项目的index.js中，较大	|主项目与分支项目打包不同的js但是共享第三方资源比如element-ui	|与主页面的资源分开加载，不共同使用|
-|推荐	|单人维护前端项目时使用	|<=2人开发前端项目时使用	|多人同时负责前端项目，或没有专门前端开发人员时使用|
-
-## 四、登陆、目录及postmessage
-### 4.1	登陆
-框架采用post方式登陆，在登陆后将返回的token存入主框架的vuex与cookie的相应字段中（而不是localstorage中）。关于字段的设置在src/global_config.js里面，还有登陆时api请求地址的设置也在其中（Auth. LoginPostUrl）。
-
-如果主框架已经成功登陆，在打开每一个子页面时，会在uri后面增加[token]这个参数(这个参数的名称存储于global_config.Auth.UserTokenName字段中，这个参数的值是登陆时获得的token值)，所以主页面登陆时，所有打开的子页面都会获得主页面的登陆信息。
-
-各页面可向主框架请求登陆后的信息（使用postmessage的方式）。
-
-### 4.2	目录
-
-框架的目录从api中读取，配置在src/global_config.js中，读取的目录结构是Array形式，具体可参考rap2中的配置。
-当完成一个单独页面并挂上服务器后，在框架的api的位置上挂载这个页面的网址并设置CORS[注1]
-
-### 4.3	PostMessage
-#### 4.3.1 介绍
-
-PostMessage是目前较好的解决窗口间交互的数据交流方式，属于HTML5自带的window函数。每个window都会自带该函数。
-发送postmessage到母窗口可以触发在主框架预先写好的函数，使主框架返回相应的数据或做出操作，如改变窗口高度，关闭该tab，获得user信息等。
-下面是一个简单的函数实例：
+### 2.6 在线测试
+利用webpack的webpack-dev-server功能，我们可以实现所见即所得的测试效果，也就是我们所谓的
 ```
-  let params = { iframe_name: "iframe_test", iframe_height: hgt };
-            window.parent.postMessage(
-                { type: "simple", req_name: "setIframeHeight", req_param: params },
-                "*"
-            );
+npm run dev
 ```
+当你修改了文件并保存后，就可以直接在浏览器中看到修改的效果，甚至不需要刷新网页。比起每次修改均需要重新编译整个项目的旧有前后结合模式，极大提高了效率
 
-#### 4.3.2 接口API
-
-目前框架已经开放的postMessage接口有如下的几个，后续将会逐步添加:
-
-|函数名|函数意义|参数及解释|
-|---|---|---|
-|setIframeHeight|设置该子页面的高度（避免出现两个滚动条）|iframe_name:该子页面的名称 <br>iframe_height:需要设置的高度|
-|closeIframe|关闭指定名称的这个子页面|name:这个子页面的名称<br>**说明**：一般情况下用于关闭发出命令的这个子页面|
-|getUserInfo|用token向框架请求user信息|token:框架登陆时的token(详见4.1 的说明)<br>**说明**:由于postMessage不支持交互命令，所以这个命令的执行需要特殊手段达成<br>**回调信息**:{<br>code:表示是否成功，<br>salt:表示该请求的salt,<br>data:{<br>msg:请求结果的详细说明,<br>user_info:如果请求是成功的，则这里会有用户信息，如果不成功没有该项<br>}<br>}|
-|openNewPage|命令框架打开新的页面|code:新页面的code<br>**说明**：关于code的值可以使用下面的getMenu命令从框架处获得。该code的值就是设置主框架目录的code值(如果该code值代表的不是实际页面而是根目录，那么该postmessage命令无效))|
-|getMenu|获得框架的目录列表|参数:无<br>**说明**:该命令获得的目录就是框架通过api向服务请求的目录Array。由于postMessage不支持交互命令，所以这个命令的执行需要特殊手段达成<br>**回调信息**:{<br>code:表示是否成功，<br>salt:表示该请求的salt,<br>data:如果请求成功，这里会有目录列表，如果不成功不会有该项<br>}|
-
-#### 4.3.4 postMessage交互
-由于postMessage不是一个promise回调函数，所以理论上无法在发送后指定地获得任何回传信息。但是我们可以手动地制作一个回调机制。
-我们在框架内规定了一个salt参数，当postMessage发送请求时，框架接收到salt参数后会将这个参数原样返回，这样当子页面接收到同样的salt参数，就知道这个信息是其发送的某个请求的回调了。下面的实例中会有类似的样例可供参考
-
-#### 4.3.5 各接口实例：
-```
-//setIframeHeight
-//---------------------------------------------
-  let hgt = window.document.body.scrollHeight + 17;
-      // console.log("获得token信息", window.parent.document.body);
-      let ifr_name=this.$route.name;
-      let params = { iframe_name: ifr_name, iframe_height: hgt };
-     
-      window.parent.postMessage({ type: "simple", req_name: "setIframeHeight", req_param: params }, "*");
-```
-
-```
-//closeIframe
-//---------------------------------------------
-  let params = { name: "test" };
-        window.parent.postMessage(
-          { type: "simple", req_name: "closeIframe", req_param: params },
-          "*"
-        );
-```
-
-```
-//getUserInfo
-//--------------------------------------------
-
-//----------------下面是接收的函数-------------
-  window.addEventListener("message", function(rs) {
-        // console.log(rs);
-        try {
-          console.log("test回调", rs);
-          if(rs.data.salt=="user_infoaxxx"){
-              //通过同样的salt来确定是否为回调的信息
-            if(rs.data.code==0){
-                //通过回调信息的code判断框架应答程序的运行结果
-              consol.log("获取成功");
-              
-              this.user_info=rs.data.data.user_info;
-              //储存应答程序回传的user_info信息
-          }
-          }
-          
-        } catch (e) {}
-        // 单独引入一个函数，进行rs.data的处理
-      });
-///----------------接收函数END-----------------
-//----------------下面是发送的函数--------------
-
-        let params = {token:"aassffssxx"};
-      window.parent.postMessage(
-        { type: "simple", req_name: "getUserInfo", req_param: params, salt: "user_infoaxxx" },
-        "*"
-      );
-```
-
-```
-//openNewPage
-//---------------------------------------------
- let params = { code: "intro1" };
-        window.parent.postMessage(
-          { type: "simple", req_name: "closeIframe", req_param: params },
-          "*"
-        );
-```
-
-```
-//getMenu
-//---------------------------------------------
-
-//----------------下面是接收的函数-------------
-  window.addEventListener("message", function(rs) {
-        // console.log(rs);
-        try {
-          console.log("test回调", rs);
-          if(rs.data.salt=="aassfff"){
-              //通过同样的salt来确定是否为回调的信息
-            if(rs.data.code==0){
-                //通过回调信息的code判断框架应答程序的运行结果
-              consol.log("获取成功");
-              
-              this.menu=rs.data.data;
-              //储存应答程序回传的menu信息
-          }
-          }
-          
-        } catch (e) {}
-        // 单独引入一个函数，进行rs.data的处理
-      });
-///----------------接收函数END-----------------
-//----------------下面是发送的函数--------------
-
-        let params = { };
-      window.parent.postMessage(
-        { type: "simple", req_name: "getMenu", req_param: params, salt: "aassfff" },
-        "*"
-      );
-```
+### 2.7 部署
+前面已经介绍了使用nginx部署前端构建后文件的形式。同时我们可以结合git-flow的功能， 使修改——部署上线周期极大缩短，达到热部署的效果。

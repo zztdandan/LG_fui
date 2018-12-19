@@ -21,7 +21,7 @@
           <!-- 主要页面iframe内容 -->
           <app-main class="app-main-calc"></app-main>
         </el-main>
-        <el-footer style="height:40px">
+        <el-footer>
           <!-- 页脚 -->
 
           <lg-footer></lg-footer>
@@ -84,7 +84,7 @@
   padding: 0px;
   width: 100%;
   display: block;
-  /* height: 42px; */
+    height: 2.5rem;
   margin-bottom: 3px;
   box-shadow: 0 0 10px rgba(48, 65, 86, 0.65);
   display: flex;
@@ -94,7 +94,7 @@
 }
 .el-footer {
   padding: 0px;
-  height: 40px;
+  height: 2.5rem!important;
   width: 100%;
   display: block;
 }
@@ -109,6 +109,6 @@
   min-height: 2.2rem;
 }
 .app-main-calc {
-  min-height: calc(100vh - 85px);
+  min-height: calc(100vh - 5.4rem);
 }
 </style>

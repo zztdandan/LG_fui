@@ -1,6 +1,6 @@
 <template>
     <div class="lg-footer">
-        页脚
+        柳钢前端框架
     </div>
 </template>
 
@@ -13,7 +13,7 @@
 <style scoped>
 .lg-footer {
   height:100%;
-  background: #4c645a;
+  background: #607d7d;
   color: #ffffff;
 }
 </style>
