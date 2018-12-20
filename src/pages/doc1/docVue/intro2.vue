@@ -51,7 +51,7 @@
           );
         },
         nextPage() {
-          let params = { code: "intro2" };
+          let params = { code: "intro3" };
           window.parent.postMessage(
             { type: "simple", req_name: "openNewPage", req_param: params },
             "*"

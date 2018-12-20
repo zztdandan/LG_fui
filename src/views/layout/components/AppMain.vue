@@ -9,7 +9,7 @@
 
       <!-- 对于没有对应控件的router的地址，使用frame方式，对于有确切控件的router地址，使用router方式 -->
       <div v-if="is_frame(one_page.url)">
-        <frame-temp :url="one_page.url" :page_id="one_page.id" :class="is_active_class(one_page.id)"></frame-temp>
+        <frame-temp class="mh" :url="one_page.url" :page_id="one_page.id" :class="is_active_class(one_page.id)"></frame-temp>
       </div>
 
       <!-- <vhtml-panel :url.sync="one_page.url" :class="is_active_class(one_page.id)"></vhtml-panel> -->
@@ -105,7 +105,7 @@
 <style scoped>
 .app-main {
   /*50 = navbar  */
-  min-height: 100%;
+  /* min-height: 100%; */
   position: relative;
   overflow: hidden;
 }
@@ -115,5 +115,8 @@
 }
 .inactive_page {
   display: none;
+}
+.mh{
+  min-height:calc(100vh - 5.4rem);
 }
 </style>

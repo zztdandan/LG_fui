@@ -1,0 +1,148 @@
+@font-face {
+  font-family: 'lg-icon';
+  src:
+    url('fonts/lg-icon.ttf?ldxyih') format('truetype'),
+    url('fonts/lg-icon.woff?ldxyih') format('woff'),
+    url('fonts/lg-icon.svg?ldxyih#lg-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="lgui-"], [class*=" lgui-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'lg-icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lgui-uniE900:before {
+  content: "\e900";
+}
+.lgui-pwd:before {
+  content: "\e901";
+}
+.lgui-user:before {
+  content: "\e902";
+}
+.lgui-ai43:before {
+  content: "\e903";
+}
+.lgui-digital:before {
+  content: "\e904";
+}
+.lgui-lishi:before {
+  content: "\e905";
+}
+.lgui-meiqitianranqi:before {
+  content: "\e906";
+}
+.lgui-mima:before {
+  content: "\e907";
+}
+.lgui-shezhishedingpeizhibanshou:before {
+  content: "\e908";
+}
+.lgui-shuju:before {
+  content: "\e909";
+}
+.lgui-uniE90A:before {
+  content: "\e90a";
+}
+.lgui-search1:before {
+  content: "\e987";
+}
+.lgui-list1:before {
+  content: "\e9bb";
+}
+.lgui-menu1:before {
+  content: "\e9be";
+}
+.lgui-plus1:before {
+  content: "\ea0c";
+}
+.lgui-minus1:before {
+  content: "\ea0d";
+}
+.lgui-cross1:before {
+  content: "\ea11";
+}
+.lgui-checkmark1:before {
+  content: "\ea12";
+}
+.lgui-search:before {
+  content: "\e986";
+}
+.lgui-list:before {
+  content: "\e9ba";
+}
+.lgui-menu:before {
+  content: "\e9bd";
+}
+.lgui-plus:before {
+  content: "\ea0a";
+}
+.lgui-minus:before {
+  content: "\ea0b";
+}
+.lgui-cross:before {
+  content: "\ea0f";
+}
+.lgui-checkmark:before {
+  content: "\ea10";
+}
+.lgui-arrow-up-left:before {
+  content: "\ea31";
+}
+.lgui-arrow-up:before {
+  content: "\ea32";
+}
+.lgui-arrow-up-right:before {
+  content: "\ea33";
+}
+.lgui-arrow-right:before {
+  content: "\ea34";
+}
+.lgui-arrow-down-right:before {
+  content: "\ea35";
+}
+.lgui-arrow-down:before {
+  content: "\ea36";
+}
+.lgui-arrow-down-left:before {
+  content: "\ea37";
+}
+.lgui-arrow-left:before {
+  content: "\ea38";
+}
+.lgui-arrow-up-left2:before {
+  content: "\ea39";
+}
+.lgui-arrow-up2:before {
+  content: "\ea3a";
+}
+.lgui-arrow-up-right2:before {
+  content: "\ea3b";
+}
+.lgui-arrow-right2:before {
+  content: "\ea3c";
+}
+.lgui-arrow-down-right2:before {
+  content: "\ea3d";
+}
+.lgui-arrow-down2:before {
+  content: "\ea3e";
+}
+.lgui-arrow-down-left2:before {
+  content: "\ea3f";
+}
+.lgui-arrow-left2:before {
+  content: "\ea40";
+}

@@ -73,7 +73,7 @@
 <style scoped>
 .frame-temp {
   width: 100%;
-  min-height: calc(100vh - 95px);
+  min-height: calc(100vh - 5.4rem);
   /* height:-webkit-fill-available; */
 }
 </style>

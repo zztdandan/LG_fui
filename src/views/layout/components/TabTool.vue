@@ -1,7 +1,9 @@
 <template>
   <!-- tab管理模块 ，打开、关闭tab等功能，完全依赖于tabs store，不能独立使用（可后期改造为传值型）-->
-  <div>
-
+  <div class="fl-nw">
+     <div class="rotator-container">
+      <rotator :toggle-click="toggleSideBar" :is-active="!isCollapse"></rotator>
+    </div>
     <div v-for="one_tab in tab_list" :key="one_tab.id" class="inline-tab" @click="handleClick(one_tab)">
       <el-tag closable :type="tab_color(one_tab.id)" :disable-transitions="false" @close="handleClose(one_tab)">{{one_tab.title}}</el-tag>
     </div>
@@ -11,15 +13,22 @@
 </template>
 
 <script>
+ import rotator from "@/components/rotator/rotator";
   //  { order: 0, id: "main_index", url: "/#/home_menu/main", title: "main" }
   export default {
     name: "tab-tool",
+    components:{
+      rotator
+    },
     data: function() {
       return {};
     },
     computed: {
       tab_list() {
         return this.$store.getters.TABS;
+      },
+       isCollapse() {
+        return !this.$store.getters.SIDEBAR_COLLAPSE;
       },
       actived_tab() {
         return this.$store.getters.ACTIVED_PAGE;
@@ -55,6 +64,9 @@
         } else {
           return "info";
         }
+      },
+        toggleSideBar() {
+        this.$store.commit("TOGGLE_SIDEBAR");
       }
     }
   };
@@ -67,6 +79,22 @@
   display: inline-block;
   cursor: pointer;
   padding: 3px;
+}
+.fl-nw{
+// width: fit-content;
+flex-wrap: "nowrap";
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+align-items: flex-start;
+}
+.rotator-container {
+  color: #80aee2;
+  /* width: 100%; */
+  text-align: center;
+  display: block;
+  padding: 0.3rem 1rem;
+  font-size: 1.8rem;
 }
 </style>
 

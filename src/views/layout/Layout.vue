@@ -21,7 +21,7 @@
           <!-- 主要页面iframe内容 -->
           <app-main class="app-main-calc"></app-main>
         </el-main>
-        <el-footer style="height:40px">
+        <el-footer>
           <!-- 页脚 -->
 
           <lg-footer></lg-footer>
@@ -54,21 +54,18 @@
       UserTab
     },
 
-
     methods: {
       // handleClickOutside() {
       //   this.$store.dispatch("CloseSideBar", { withoutAnimation: false });
       // }
     },
-    computed:{
-      fit_collapse(){
-        if(!this.$store.getters.SIDEBAR_COLLAPSE){
-          return "64px"
+    computed: {
+      fit_collapse() {
+        if (!this.$store.getters.SIDEBAR_COLLAPSE) {
+          return "4rem";
+        } else {
+          return "12rem";
         }
-        else{
-          return "150px"
-        }
-
       }
     }
   };
@@ -87,31 +84,31 @@
   padding: 0px;
   width: 100%;
   display: block;
-  /* height: 42px; */
+    height: 2.5rem;
   margin-bottom: 3px;
   box-shadow: 0 0 10px rgba(48, 65, 86, 0.65);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .el-footer {
   padding: 0px;
-  height: 40px;
+  height: 2.5rem!important;
   width: 100%;
   display: block;
 }
 .tab-tool-fl {
-  position: relative;
-  float: left;
   width: calc(100% - 8rem);
   min-width: 10rem;
   min-height: 2rem;
-  overflow-y: hidden;
+  overflow-x: auto;
 }
 .user-tab-fl {
-  position: relative;
-  float: left;
-  width:8rem;
+  width: 8rem;
   min-height: 2.2rem;
 }
 .app-main-calc {
-  min-height: calc(100vh - 85px);
+  min-height: calc(100vh - 5.4rem);
 }
 </style>

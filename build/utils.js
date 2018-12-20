@@ -131,7 +131,7 @@ exports.entries = function() {
       filePath.lastIndexOf("/") + 1,
       filePath.lastIndexOf(".")
     );
-    map[filename] = filePath;
+    map[filename] =["babel-polyfill",filePath];
   });
   return map;
 };
