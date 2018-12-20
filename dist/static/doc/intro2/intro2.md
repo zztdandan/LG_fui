@@ -62,7 +62,7 @@ npm run build
 
     }
 ```
-<font color=green>[注1]</font>在我们开发中，所有的api的访问地址都是/api/(.*)，在测试环境中，由于webpack的webpack-dev-server插件自带了一个小型的express进行映射，所以通过配置config.dev.ProxyTable:
+[注1]在我们开发中，所有的api的访问地址都是/api/(.*)，在测试环境中，由于webpack的webpack-dev-server插件自带了一个小型的express进行映射，所以通过配置config.dev.ProxyTable:
 ```
  proxyTable: {
       '/api': { // api表示当前项目请求使用该项可进入远程端访问
@@ -82,7 +82,7 @@ npm run build
 
 柳钢前端框架结构图如下
 
-<img style="width:1000px!important;    max-width:100% !important;" src='/static/doc/intro2/pic/svg1.svg'/>
+![](/static/doc/intro2/pic/svg1.svg)
 
 ## 三、各开发模式区别：
 

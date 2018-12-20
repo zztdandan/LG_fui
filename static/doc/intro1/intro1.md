@@ -158,7 +158,7 @@ git clone http://172.16.4.191:3000/80822215/multiple-vue.git
     │               └── index.js
     └── static ——静态资源目录
 
-><font color=green>[注1]</font>注意，这个目录下的第二级的所有js会被webpack扫描，如果你在里面放入了不能被识别为页面的js会导致webpack打包混乱。但是该扫描只作用于第二级（也就是index.html,cell.html那一级），放在别的位置的js不会被扫描。
+>[注1]注意，这个目录下的第二级的所有js会被webpack扫描，如果你在里面放入了不能被识别为页面的js会导致webpack打包混乱。但是该扫描只作用于第二级（也就是index.html,cell.html那一级），放在别的位置的js不会被扫描。
 
 
 同样地,安装依赖包后可以启动项目：
