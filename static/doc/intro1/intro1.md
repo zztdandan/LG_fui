@@ -73,7 +73,7 @@ npm install --global vue-cli
 
 ![vscode控制台](/static/doc/intro1/pic/3.png)
 
-安装完成后查看vue版本号确认全局安装完成(<font color=red size=3>注意大写</font>)
+安装完成后查看vue版本号确认全局安装完成(注意大写)
 ```
 vue –V
 ```
