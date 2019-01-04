@@ -109,6 +109,6 @@
   min-height: 2.2rem;
 }
 .app-main-calc {
-  min-height: calc(100vh - 5.4rem);
+  min-height: calc(100vh - 5.2rem)
 }
 </style>

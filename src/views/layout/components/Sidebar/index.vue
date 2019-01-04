@@ -77,4 +77,11 @@
   padding: 0.5rem;
   font-size: 1.5rem;
 }
+.el-menu--collapse>.menu-wrapper>.el-submenu>.el-submenu__title span {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+    display: inline-block;
+}
 </style>

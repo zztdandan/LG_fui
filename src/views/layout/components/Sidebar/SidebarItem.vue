@@ -9,7 +9,7 @@
     <el-submenu :index="this.one_menu_item.code" v-else>
       <template slot="title">
         <i :class="this.one_menu_item.icon" />
-        <span :class="calc_title">{{this.one_menu_item.name}}</span>
+        <span slot="title" >{{this.one_menu_item.name}}</span>
       </template>
 
       <template v-for="child in child_one_menu_item">
@@ -71,11 +71,12 @@
         }
       },
       calc_title() {
-        if (!this.$store.getters.SIDEBAR_COLLAPSE) {
-          return "collapse-title";
-        } else {
-          return "";
-        }
+        // if (!this.$store.getters.SIDEBAR_COLLAPSE) {
+        //   return "collapse-title";
+        // } else {
+        //   return "";
+        // }
+        return "";
       },
       ifhidden() {
         if (this.one_menu_item.hidden) {
@@ -90,7 +91,7 @@
 </script>
 <style scoped>
 .collapse-title {
-  display: none;
+  /* display: none; */
 }
 .hid{
    display: none;
