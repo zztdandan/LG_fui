@@ -1,5 +1,7 @@
 # Swallow开发平台使用手册
 
+> date: 2019-01-02 author: 甘树禧
+
 ## 环境安装
 
 + JDK： 确保系统安装JDK8
@@ -144,26 +146,26 @@
 
   + Linux环境(bash)
     
-        ```bash
-        mvn archetype:generate -B \
-        -DarchetypeGroupId=com.liuzhousteel.swallow \
-        -DarchetypeArtifactId=swallow-archetype \
-        -DarchetypeVersion=LATEST \
-        -DgroupId=com.liuzhousteel \
-        -DartifactId=demo \
-        -Dversion=1.0-SNAPSHOT
-        ```
+      ```bash
+      mvn archetype:generate -B \
+      -DarchetypeGroupId=com.liuzhousteel.swallow \
+      -DarchetypeArtifactId=swallow-archetype \
+      -DarchetypeVersion=LATEST \
+      -DgroupId=com.liuzhousteel \
+      -DartifactId=demo \
+      -Dversion=1.0-SNAPSHOT
+      ```
   + Windows环境(bat)
-     
-        ```bat
-         mvn archetype:generate -B ^
-          -DarchetypeGroupId=com.liuzhousteel.swallow ^
-          -DarchetypeArtifactId=swallow-archetype ^
-          -DarchetypeVersion=LATEST ^
-          -DgroupId=com.liuzhousteel ^
-          -DartifactId=demo ^
-          -Dversion=1.0-SNAPSHOT
-        ```
+    
+      ```bat
+        mvn archetype:generate -B ^
+        -DarchetypeGroupId=com.liuzhousteel.swallow ^
+        -DarchetypeArtifactId=swallow-archetype ^
+        -DarchetypeVersion=LATEST ^
+        -DgroupId=com.liuzhousteel ^
+        -DartifactId=demo ^
+        -Dversion=1.0-SNAPSHOT
+      ```
 上面命令中，我们并不需要关心那么多，只需要关心哪些呢？首先需要关心的是我们要生成的工程的pom坐标，也就是`groupId`,`artifactId`,`version`等几个要素。分别对应的就是命令中的
 ``` 
  -DgroupId=com.liuzhousteel // 项目的groupId
@@ -246,3 +248,5 @@ public static void main(String[] args) {
   generator.genEntityToConsole("tableName");
 }
 ```
+
+## 文档陆续补充中……
