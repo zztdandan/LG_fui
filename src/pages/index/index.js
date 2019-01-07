@@ -16,8 +16,8 @@ import App from "./index.vue";
 // index的专用store，就是主要的store
 import store from "./store";
 
-import "#static/lg-icon/style.css"
-import "#static/moon-icon/style.css"
+// import "@/assets/lg-icon/style.css"
+// import "@/assets/moon-icon/style.css"
 // import "@/icons"; // icon
 // import "@/permission"; // permission control
 
