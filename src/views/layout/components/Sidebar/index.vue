@@ -3,7 +3,7 @@
   <!-- 实现sidebar各项设置 -->
   <div :class="navbar_class" class="side-navbar">
      <div class="title-container">
-     柳钢前端
+     柳钢框架
     </div>
     <el-menu :show-timeout="100" :default-active="actived_page" :collapse-transition="true" :collapse="isCollapse" mode="vertical" background-color="#4f7080" text-color="#bfcbd9" active-text-color="#409EFF">
       <sidebar-item v-for="menu_item in root_menu" :key="menu_item.code" :one_menu_item="menu_item" :total_list="page_menu" />

@@ -171,11 +171,8 @@ npm run dev
 ![](/static/doc/intro1/pic/7.png)
 
 
-### &emsp;2.3	安装lg-vue-ui及element-ui包
+### &emsp;2.3	使用lg-vue-ui加速开发
 Lg-vue-ui是我们自己开发的一个ui框架包（依赖于elementui，会自动安装的）。封装了一些我们经常使用的控件避免重复开发。Element-ui是我们推荐的与vue共同使用的ui框架包
-```
-npm i element-ui –S
-npm i lg-vue-ui -S
-```
+关于如何使用该包来加速开发，我们可以参阅lgui相关章节"使用lgui快速开发————快速上手"。
 这两个UI框架包会有助于我们快速开发统一风格的前端页面。
 
