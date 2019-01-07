@@ -44,12 +44,12 @@ node -v
 npm –v
 ```
 
-![查询结果图片](/static/doc/intro1/pic/1.png)
+![查询结果图片](./static/doc/intro1/pic/1.png)
 
 当版本号显示完全，说明安装成功，否则重新安装node。
 （注意，在VSCode里面，可以在IDE里面打开控制台，如果使用VSCode推荐这个方式）
 
-![vscode控制台](/static/doc/intro1/pic/2.png)
+![vscode控制台](./static/doc/intro1/pic/2.png)
 
 注意，在无法使用vpn链接国际网络时，有可能npm的安装会有一些包无法获取，可以使用cnpm命令代替npm进行下面所有install的命令。在此之前安装cnpm命令包
 ```
@@ -71,7 +71,7 @@ npm install webpack webpack-cli –g
 npm install --global vue-cli
 ```
 
-![vscode控制台](/static/doc/intro1/pic/3.png)
+![vscode控制台](./static/doc/intro1/pic/3.png)
 
 安装完成后查看vue版本号确认全局安装完成(注意大写)
 ```
@@ -107,8 +107,8 @@ npm run dev
 ```
 启动一个单页面应用(SPA)的helloworld
 
-![](/static/doc/intro1/pic/4.png)
-![](/static/doc/intro1/pic/5.png)
+![](./static/doc/intro1/pic/4.png)
+![](./static/doc/intro1/pic/5.png)
 
 ### &emsp;2.2 part2	使用配置好的工程文件搭建MPA架构应用
 + 下载工程文件夹
@@ -166,9 +166,9 @@ git clone http://172.16.4.191:3000/80822215/multiple-vue.git
 npm install
 npm run dev
 ```
-![](/static/doc/intro1/pic/6.png)
+![](./static/doc/intro1/pic/6.png)
 这是一个多页面（MPA）应用。我们除了访问http://localhost:9528/#/ 以访问index.html外，还可以访问http://localhost:9528/cell.html#/ 来访问在同一个工程下的另一个页面
-![](/static/doc/intro1/pic/7.png)
+![](./static/doc/intro1/pic/7.png)
 
 
 ### &emsp;2.3	使用lg-vue-ui加速开发

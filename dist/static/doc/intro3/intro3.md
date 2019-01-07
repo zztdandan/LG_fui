@@ -57,7 +57,7 @@
 
 为了完成以上目标，我们将从传统的前后端结合的开发模式，通过一系列规范与工具，进化到前后端分离、前端工程化的开发模式。
 
-![](/static/doc/intro3/pic/3.png)
+![](./static/doc/intro3/pic/3.png)
 
 ### 2.1 代码规范
   使用ESLINT进行代码规范，prettier进行代码格式化。
@@ -174,14 +174,14 @@ console.log(b.param);
 
 组件化是在设计层面上，对于UI的拆分。页面上所有的东西都可以看成组件，页面是个大型组件，可以拆成若干个中型组件，然后中型组件还可以再拆，拆成若干个小型组件，小型组件也可以再拆，直到拆成DOM元素为止。DOM元素可以看成是浏览器自身的组件，作为组件的基本单元。
 
-![](/static/doc/intro3/pic/components.png)
+![](./static/doc/intro3/pic/components.png)
 
 在vue的开发中，可以用逐层分治的模式把一个完整的工程分治为一个个页面，来简化开发难度，增加复用性
-![](/static/doc/intro3/pic/4.png)
+![](./static/doc/intro3/pic/4.png)
 
 ### 2.5 构建
 我们采用的构建工具是webpack。webpack可以将模块化分散的各个.vue文件，.js文件以chunks的方式整合生成一个整体的js文件，我们发布的时候只需要将整合好的js发布到产品环境即可。
-![](/static/doc/intro3/pic/5.png)
+![](./static/doc/intro3/pic/5.png)
 详细的webpack打包性质我们将在下篇介绍，现在只需要知道使用Module及.vue工程化开发的文件不经过打包是无法真正显示为页面的。
 
 ### 2.6 在线测试
