@@ -11,7 +11,7 @@
 <script>
   // import Ligth7_modal from 'components/Common_comp/Ligth7_modal';
 
-  import light7 from '#static/light7/js/light7';
+  // import light7 from '#static/light7/js/light7';
   light7.config = {
     autoInit: true,
     router: false

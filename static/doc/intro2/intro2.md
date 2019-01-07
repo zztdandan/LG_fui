@@ -82,7 +82,7 @@ npm run build
 
 柳钢前端框架结构图如下
 
-![](/static/doc/intro2/pic/svg1.svg)
+![](./static/doc/intro2/pic/svg1.svg)
 
 ## 三、各开发模式区别：
 
