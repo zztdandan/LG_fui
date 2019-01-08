@@ -26,10 +26,10 @@
     },
     methods: {
       handleSwallow() {
-         this.$store.dispatch("open_page",{code:"intro1"});
+         this.$store.dispatch("open_page",{code:"intro4"});
       },
       handleLgvue() {
-         this.$store.dispatch("open_page", {code:"intro4"});
+         this.$store.dispatch("open_page", {code:"intro1"});
       }
     }
   };
