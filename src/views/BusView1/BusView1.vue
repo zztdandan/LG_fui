@@ -1,6 +1,8 @@
 <template>
     <div>
         业务页面1
+        <button-demo></button-demo>
+        <el-button>测试按钮</el-button>
     </div>
 </template>
 
