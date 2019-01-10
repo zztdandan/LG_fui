@@ -36,13 +36,13 @@ async function user_token_login(that_vue, axios) {
 
 async function set_auth(that_vue, axios) {
   const res_auth = await axios.get("/api/get_user_auth");
-  // log_entity("权限信息打印", res_auth);
+   log_entity("权限信息打印", res_auth);
   let res = await that_vue.$store.dispatch("SetAuth", res_auth);
   return res;
 }
 async function set_menu(that_vue, axios) {
   const res_menu = await axios.get("/api/get_menu");
-  // log_entity("目录打印", res_menu);
+  log_entity("目录打印", res_menu);
   let res = await that_vue.$store.dispatch("SetMenu", res_menu);
   return res;
 }

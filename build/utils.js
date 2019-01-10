@@ -167,7 +167,7 @@ exports.htmlPlugin = function() {
         // chunksSortMode: 'dependency'
       });
     }
-    console.log(conf);
+    // console.log(conf);
     arr.push(new HtmlWebpackPlugin(conf));
   });
   return arr;

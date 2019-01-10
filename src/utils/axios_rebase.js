@@ -3,7 +3,8 @@ import axios from "axios";
 // import store from "../store";
 import { getToken } from "@/utils/auth";
 import global_config from "@/global_config";
-import { errlog, err_entity_log } from "@/utils/platform_errlog";
+import { log_entity,errlog, err_entity_log } from "@/utils/platform_errlog";
+
 // 创建axios实例
 const service = axios.create({
   timeout: 5000 // 请求超时时间
@@ -31,10 +32,8 @@ service.interceptors.response.use(
   response => {
     try {
       if (response.data.code == 0) {
-        // console.log("=============");
-        // console.log("axios请求正确");
-        // console.log(data);
-        // console.log("-------------");
+        // log_entity("打印回执",response);
+        // log_entity("打印回执实体",response.data.data);
         return response.data.data;
       } else {
         err_entity_log("lg_admin_axios:服务端返回错误结果", response.data);
