@@ -10,8 +10,8 @@
   import { getToken, setToken, removeToken } from "@/utils/auth";
   import { Router, http, cli } from "director";
   import global_config from "@/global_config";
-  import check_token from "./utils/check_token";
-  import check_route from "./utils/check_route";
+  import { check_token } from "./utils/check_token";
+  import { check_route_sign } from "./utils/check_route";
   import doPostMessage from "./utils/doPostMessage";
 
   export default {
@@ -26,33 +26,15 @@
       let that_vue = this;
       // console.log("1");
       try {
-        //注册一个router初始事件
-        that_vue.$router.beforeEach((to, from, next) => {
-          check_route(to, that_vue, that_vue.$store)
-            .then(res => {
-              next();
-            })
-            .catch(err => {
-              console.log("检查router出错", err);
-            });
-        });
         //  做两个登陆处理：
         //  1、check一下token信息，看是否符合登陆要求。如果符合，则将登陆信息塞进来，如果不符合，则弹到登陆页面
         //  2、check route信息，如果route中有params，则先检查这个page是否有权限访问，如果有，切换activetab，如果没有，则弹到登陆页面
 
-        check_token(that_vue, that_vue.$ajax)
-          .then(res => {
-            console.log(res,"token检查");
-            check_route(that_vue.$route, that_vue, that_vue.$store)
-              .then(res => {})
-              .catch(err => {
-                console.log("检查router出错", err);
-              });
-          })
-          .catch(err => {
-            console.log("检查token出错", err);
-            // location.href = "/login.html#/";
-          });
+        //注册一个router初始事件
+        check_route_sign(that_vue);
+
+        //check一下token
+        check_token(that_vue);
 
         //注册postMessage事件
         window.addEventListener("message", function(rs) {
@@ -61,11 +43,11 @@
             let rsdata = rs.data;
             if (typeof rsdata.type != "undefined") {
               doPostMessage(rsdata, that_vue).then(res => {
-               if(res){
-                console.log("回执命令",res);
-          
-                 rs.source.postMessage(res,rs.origin);
-               }
+                if (res) {
+                  console.log("回执命令", res);
+
+                  rs.source.postMessage(res, rs.origin);
+                }
               });
             }
           } catch (e) {}

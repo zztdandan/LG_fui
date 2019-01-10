@@ -1,6 +1,6 @@
 import "linqjs";
-
-export default async function(route, that_vue, store) {
+import { errlog, err_entity_log } from "@/utils/platform_errlog";
+async function check_route_function(route, that_vue, store) {
   if (route.name === "home_menu") {
     console.log("do_router_check", route);
     const page_id = route.params.page_id;
@@ -16,6 +16,7 @@ export default async function(route, that_vue, store) {
       return 0;
     } else {
       // 无权访问该页面
+      errlog("无权访问页面");
       throw new Error("无权访问页面");
     }
   } else {
@@ -30,3 +31,17 @@ export default async function(route, that_vue, store) {
     }
   }
 }
+function check_route_sign(that_vue) {
+  //注册一个router初始事件
+  that_vue.$router.beforeEach((to, from, next) => {
+    check_route_function(to, that_vue, that_vue.$store)
+      .then(res => {
+        next();
+      })
+      .catch(err => {
+        err_entity_log("检查router出错", err);
+      });
+  });
+}
+
+export { check_route_sign, check_route_function };

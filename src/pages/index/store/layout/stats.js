@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 const layout_stats = {
   state: {
     sidebar: {
-      opened: true
+      opened: false
     },
     device: "desktop"
   },

@@ -1,0 +1,83 @@
+.app-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.el-main {
+    padding: 0px!important;
+}
+.el-container{
+
+}
+.el-header {
+    padding: 0px!important;
+    width: 100%;
+    display: block;
+    height: 2.5rem;
+    margin-bottom: 3px;
+    box-shadow: 0 0 10px rgba(48, 65, 86, 0.65);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.el-footer {
+    padding: 0px!important;
+    height: 2.5rem !important;
+    width: 100%;
+    display: block;
+}
+
+.tab-tool-fl {
+    width: calc(100% - 8rem);
+    min-width: 10rem;
+    min-height: 2rem;
+    overflow-x: auto;
+}
+
+.user-tab-fl {
+    width: 8rem;
+    min-height: 2.2rem;
+}
+
+.app-main-calc {
+    min-height: calc(100vh - 5.2rem)
+}
+
+.el-menu {
+    border-right: solid 1px rgb(79, 112, 128)!important;
+}
+
+.title-container {
+    color: #bfcbd9;
+    /* width: 100%; */
+    text-align: center;
+    display: block;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.el-menu--collapse>.menu-wrapper>.el-submenu>.el-submenu__title span {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+    display: inline-block;
+}
+.side-navbar {
+    height: 100%;
+    background-color: #4f7080;
+    /* border-right: solid 1px #e6e6e6; */
+    padding: -1px;
+    overflow: hidden;
+  }
+  .collapse-nav {
+    /* width: fit-content; */
+    overflow: hidden;
+  }
+  .nocollapse-nav {
+    /* width: fit-content; */
+    overflow: hidden;
+  }

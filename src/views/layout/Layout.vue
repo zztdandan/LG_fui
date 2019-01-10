@@ -42,7 +42,7 @@
 
 <script>
   import { Navbar, Sidebar, AppMain, LgFooter, TabTool, UserTab } from "./components";
-
+  import "./css/index.css";
   export default {
     name: "lg-layout",
     components: {
@@ -72,43 +72,4 @@
 </script>
 
 <style  scoped>
-.app-wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-.el-main {
-  padding: 0px;
-}
-.el-header {
-  padding: 0px;
-  width: 100%;
-  display: block;
-    height: 2.5rem;
-  margin-bottom: 3px;
-  box-shadow: 0 0 10px rgba(48, 65, 86, 0.65);
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.el-footer {
-  padding: 0px;
-  height: 2.5rem!important;
-  width: 100%;
-  display: block;
-}
-.tab-tool-fl {
-  width: calc(100% - 8rem);
-  min-width: 10rem;
-  min-height: 2rem;
-  overflow-x: auto;
-}
-.user-tab-fl {
-  width: 8rem;
-  min-height: 2.2rem;
-}
-.app-main-calc {
-  min-height: calc(100vh - 5.2rem)
-}
 </style>

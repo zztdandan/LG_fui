@@ -13,6 +13,10 @@
 ```
 git clone http://172.16.4.191:3000/80822215/LG_fui.git
 ```
+[使用github仓库](https://github.com/zztdandan/LG_fui.git)
+```
+git clone https://github.com/zztdandan/LG_fui.git
+```
 进入目录后，切换到目前的正式版本分支:release(或者切换到已有的标签)
 ```
 cd LG_fui

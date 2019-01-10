@@ -5,15 +5,15 @@ export default async function(rsdata, that_vue) {
   let req = rsdata;
   try {
     // let PMFunction=require("./PostMessageFunction/setIframeHeight.js");
-    
+
     let PM = PMFunction;
     if (req.type === "simple") {
-      console.log("获得命令",rsdata);
+      console.log("获得命令", rsdata);
       const req_name = req.req_name;
       const req_param = JSON.stringify(req.req_param);
       const do_funtion_str = "PM." + req_name + "(" + req_param + ",that_vue)";
       const res = eval(do_funtion_str);
-      let salt = typeof req.salt != undefined ? req.salt : "";
+      let salt = typeof req.salt !== undefined ? req.salt : "";
 
       var ret = { code: 0, salt: salt, data: res };
       return ret;

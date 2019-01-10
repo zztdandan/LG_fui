@@ -25,7 +25,7 @@
 
 <script>
   import "linqjs";
-  import FrameTemp from "components/FrameTemp";
+  import FrameTemp from "components/LgCoreComponent/FrameTemp";
   // import VhtmlPanel from "components/VHtmlPanel";
   export default {
     name: "AppMain",

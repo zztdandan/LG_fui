@@ -13,7 +13,7 @@
 </template>
 
 <script>
- import rotator from "@/components/rotator/rotator";
+ import rotator from "@/components/LgCoreComponent/rotator/rotator";
   //  { order: 0, id: "main_index", url: "/#/home_menu/main", title: "main" }
   export default {
     name: "tab-tool",
