@@ -24,7 +24,7 @@ npm是一个方便的包管理器（等同于 \.NET Nuget，Maven），我们需
 ### &emsp;1.2 Git
 我们需要用git来管理版本，或下载、更新柳钢前端框架
 安装地址：
-[git官网下载](https://git-scm.com/download/win)
+[git官网下载(右键新窗口)](https://git-scm.com/download/win)
 
 注释：可在git官网下载git的各种gui，或者按照官网教程使用命令行操作
 
